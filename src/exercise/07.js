@@ -10,14 +10,14 @@ const allItems = [
   {id: 'p', value: 'pear'},
 ]
 
-function App() {
+function App () {
   const [items, setItems] = React.useState(allItems)
 
-  function addItem() {
+  function addItem () {
     setItems([...items, allItems.find(i => !items.includes(i))])
   }
 
-  function removeItem(item) {
+  function removeItem (item) {
     setItems(items.filter(i => i !== item))
   }
 
@@ -37,7 +37,7 @@ function App() {
       <ul style={{listStyle: 'none', paddingLeft: 0}}>
         {items.map(item => (
           // 🐨 add a key prop to the <li> below. Set it to item.id
-          <li>
+          <li key={item.id}>
             <button onClick={() => removeItem(item)}>remove</button>{' '}
             <label htmlFor={`${item.value}-input`}>{item.value}</label>{' '}
             <input id={`${item.value}-input`} defaultValue={item.value} />
